@@ -106,19 +106,19 @@ const PizzaForm = props => {
                 Toppings:
                 <ul className="topping-list">
                     <li>
-                        <input name="sausage" type="checkbox" onChange={handleChange}/>
+                        <input name="sausage" type="checkbox" onChange={handleChange} className = "sausage-topping"/>
                         Sausage
                     </li>
                     <li>
-                        <input name="pineapple" type="checkbox" onChange={handleChange}/>
+                        <input name="pineapple" type="checkbox" onChange={handleChange} className = "pineapple-topping"/>
                         Pineapple
                     </li>
                     <li>
-                        <input name="pepperoni" type="checkbox" onChange={handleChange}/>
+                        <input name="pepperoni" type="checkbox" onChange={handleChange} className = "pepperoni-topping"/>
                         Pepperoni
                     </li>
                     <li>
-                        <input name="olives" type="checkbox" onChange={handleChange}/>
+                        <input name="olives" type="checkbox" onChange={handleChange} className = "olives-topping"/>
                         Olives
                     </li>
 

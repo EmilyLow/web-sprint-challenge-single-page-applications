@@ -10,3 +10,16 @@ describe('Test Text Entering', function() {
     })
 })
 
+
+describe('Multiple Toppings Test', function() {
+    it('Visits a new site', function () {
+
+        cy.visit("index.html");
+        cy.visit("./pizza")
+
+        cy.get('.olives-topping').check()
+        cy.get('.sausage-topping').check()
+        cy.get('.pepperoni-topping').check()
+        cy.get('.pineapple-topping').check()
+    })
+})
