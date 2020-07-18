@@ -1,5 +1,9 @@
 import React, {useState, useEffect } from "react";
 
+import axios from "axios";
+
+//Question, should I be needing to command line each thing I want to install individually?
+
 const PizzaForm = props => {
   
     const defaultState = {
@@ -9,6 +13,8 @@ const PizzaForm = props => {
     }
 
     const [formState, setFormState] = useState(defaultState);
+    const [post, setPost] = useState([]);
+    const [errors, setErrors] = useState({...defaultState, terms: ""});
 
 
     const handleChange = e => {
@@ -26,6 +32,16 @@ const PizzaForm = props => {
 
 
     const submitData = e => {
+        e.preventDefault();
+        console.log("Data submitted");
+
+        axios
+        .post("https://reqres.in/api/users", formState)
+        .then(res => {
+            setPost(res.data);
+            console.log("Success", res);
+        })
+        .catch(err => console.log(err.response));
 
     }
   
@@ -87,7 +103,7 @@ const PizzaForm = props => {
             </label>
 
 
-
+            <button>Add To Order</button>
 
           </form>
 
