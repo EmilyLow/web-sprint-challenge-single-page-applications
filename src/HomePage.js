@@ -4,7 +4,8 @@ import { Route, Link } from 'react-router-dom';
 const HomePage = props => {
   return (
       <div>
-          <p>Home Page</p>
+          <h1>Home of Lambda Pizza</h1>
+          
      <Link to={"/pizza"}>
         <p>Order Pizza!</p>
       </Link>

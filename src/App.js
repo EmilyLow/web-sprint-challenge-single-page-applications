@@ -14,7 +14,7 @@ const App = () => {
       <header>
         <h1>Lambda Eats</h1>
         <Link to={"/"}>
-          <p>Home</p>
+          <button>Home</button>
         </Link>
         </header>
       
