@@ -4,7 +4,8 @@ const PizzaForm = props => {
   
     const defaultState = {
         name: "",
-        size: ""
+        size: "",
+        instructions: ""
     }
 
     const [formState, setFormState] = useState(defaultState);
@@ -20,6 +21,7 @@ const PizzaForm = props => {
         });
 
         //Put inputChange(e) to test here
+        //console.log(formState);
     }
 
 
@@ -41,6 +43,7 @@ const PizzaForm = props => {
                 className = "name-field"
                 />
             </label>
+            
             <label>
                 Pizza Size:
                 <select id="size" name="size" onChange={handleChange}>    
@@ -61,12 +64,27 @@ const PizzaForm = props => {
                         <input name="pineapple" type="checkbox" onChange={handleChange}/>
                         Pineapple
                     </li>
+                    <li>
+                        <input name="pepperoni" type="checkbox" onChange={handleChange}/>
+                        Pepperoni
+                    </li>
+                    <li>
+                        <input name="olives" type="checkbox" onChange={handleChange}/>
+                        Olives
+                    </li>
 
                 </ul>
                 
-               
             </label>
-            
+            <label>
+                Special Instructions:
+                <input
+                type="text"
+                name="instructions"
+                value={formState.instructions}
+                onChange = {handleChange}
+                />
+            </label>
 
 
 

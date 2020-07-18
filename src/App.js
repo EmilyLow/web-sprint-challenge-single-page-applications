@@ -2,6 +2,8 @@ import React from "react";
 
 import { Route, Link } from 'react-router-dom';
 
+import "./styles.css";
+
 import HomePage from './HomePage.js';
 import PizzaForm from './PizzaForm.js';
 
