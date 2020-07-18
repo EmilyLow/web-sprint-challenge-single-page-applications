@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from "react";
-
+import * as yup from "yup";
 import axios from "axios";
 
 //Question, should I be needing to command line each thing I want to install individually?
@@ -16,6 +16,34 @@ const PizzaForm = props => {
     const [post, setPost] = useState([]);
     const [errors, setErrors] = useState({...defaultState, terms: ""});
 
+    //Is there a way to only define this for part of the form? Or do you havea to do it for every object inside the form?
+    let formSchema = yup.object().shape({
+        name: yup.string().required("Please enter your name.").min(2, "Name must be at least 2 characters in length")
+
+    });
+
+    const inputChange = e => {
+        e.persist();
+
+        yup
+        .reach(formSchema, e.target.name)
+        .validate(e.target.value)
+        .then(valid => {
+          setErrors({
+              ...errors,
+              [e.target.name]: ""
+          }); 
+        })
+        
+        .catch(err => {
+            setErrors({...errors, [e.target.name]: err.errors[0]
+            });
+        });
+
+
+    }
+
+
 
     const handleChange = e => {
 
@@ -28,6 +56,10 @@ const PizzaForm = props => {
 
         //Put inputChange(e) to test here
         //console.log(formState);
+        if(e.target.name === "name") {
+            inputChange(e);
+        }
+        
     }
 
 
@@ -39,7 +71,7 @@ const PizzaForm = props => {
         .post("https://reqres.in/api/users", formState)
         .then(res => {
             setPost(res.data);
-            console.log("Success", res);
+            console.log("Success", res.data);
         })
         .catch(err => console.log(err.response));
 
@@ -58,6 +90,7 @@ const PizzaForm = props => {
                 onChange = {handleChange}
                 className = "name-field"
                 />
+                {errors.name.length > 0 ? (<p className="error">{errors.name}</p>) : null}
             </label>
             
             <label>
