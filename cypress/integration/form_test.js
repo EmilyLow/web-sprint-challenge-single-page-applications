@@ -23,3 +23,19 @@ describe('Multiple Toppings Test', function() {
         cy.get('.pineapple-topping').check()
     })
 })
+
+describe('Submit Form', function() {
+    it('Visits a new site', function () {
+
+        cy.visit("index.html");
+        cy.visit("./pizza")
+
+        cy.get('.name-field').type('Name')
+
+     
+        cy.get('.pepperoni-topping').check()
+        cy.get('.pineapple-topping').check()
+
+        cy.get('form').submit()
+    })
+})
